@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>입력화면</title>
+</head>
+<body>
+	
+	<!-- 사용자가 입력한 걸 기반으로 parameter가 채워지면서 동적이던 것에서 자율성이 높아졌다!! -->
+	
+	<!-- form 태그가 없으면 화면 구성만 된 상태 -->
+	<!-- method 는 get 밖에 안배웠으니까 -->
+	<!-- action 은 어느 페이지로 이동할 건지:절대경로 (host제외) (but parameter은 action에 넣으면 안됨 -->
+	<!-- parameter은 form 태그가 완성시켜줄 것 : input 안에 name 속성 부여(parameter 이름 넣기) -->
+	<form method="get" action="/servlet/ex04">
+		<lable>이름</lable><input type="text" name="name">
+		<lable>생년월일</lable><input type="text" name="birthday">
+		
+		<!-- type="button"은 form에서 사용 불가 (아무작동 안함) type="submit"로 하기 -->
+		<button type="submit">입력</button>
+		
+		<!-- input에 type="submit" 해줘도 됨(value로 안에 넣을 값 지정해주기) -->
+		<!--  <input type="submit" value="입력">  -->
+	</form>
+
+
+</body>
+</html>

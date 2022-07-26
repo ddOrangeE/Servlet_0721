@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,18 +36,22 @@
 	    list.add(map);
 	%>
 	
-	<h1>검색 결과</h1>
-	<table class="table text-center">
+	<h1 class="mt-2">검색 결과</h1>
+	<table class="table text-center mt-3">
 		<tr>
-			<th>메뉴</th>
-			<th>상호</th>
-			<th>별점</th>
+			<th class="col-4">메뉴</th>
+			<th class="col-4">상호</th>
+			<th class="col-4">별점</th>
 		</tr>
 		
 		<!-- Map 은 아아아아아아아앙쥬 가끔만 반복문 쓰고 다 반복문 쓰지말고 key값으로 꺼내와@@ -->
 		<!-- object 로 변수를 저장해도 되지만 문자열 비교, 숫자 비교도 할 수 있기 때문에 object를 다운 캐스팅 해주는 것이 좋음 -->
 		<!-- 위의 맵은 map에 문자열과 숫자를 다 저장하기 위해 object로 upcasting해준 것 -->
 		<%
+		
+		String search = request.getParameter("search");
+		String check = request.getParameter("check");
+		
 		String name = "";
 		String menu = "";
 		double point = 0;
@@ -55,15 +60,32 @@
 			name = (String)mapList.get("name");
 			menu = (String)mapList.get("menu");
 			point = (double)mapList.get("point");
+			
+			if(!menu.equals(search)) {
+				continue;
+			}
+			
+			if(check == null) {
+				check = "";
+			}
+			
+			if(check.equals("checkOn")) {
+				if(point <= 4.0) {
+					continue;
+				}
+			} 
 		%>		
 		
+		<!-- https://linguist79.tistory.com/1309 NullPointException 제거 방법 -->
+		
 		<tr>
-			<td><%= name %></td>
-			<td><%= menu %></td>
-			<td><%= point %></td>
+			<td class="col-4"><%= name %></td>
+			<td class="col-4"><%= menu %></td>
+			<td class="col-4"><%= point %></td>
 		</tr>
 
 		<%
+			
 		}
 		%>
 	</table>

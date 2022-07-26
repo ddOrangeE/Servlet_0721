@@ -15,7 +15,28 @@
 
 </head>
 <body>
-
+	
+	<!-- 선생님 풀이 -->
+	<form method="post" action="/jsp/test04.jsp">
+		<div class="d-flex">
+			<!-- form-control 주면 적당히 예뻐짐 -->
+			<input type="text" class="form-control col-2" name="number1">
+			<select class="form-control col-1" name="operator">
+				<option value="plus">+</option>
+				<option value="minus">-</option>
+				<option value="multiple">X</option>
+				<option value="divide">/</option>
+			</select>
+			<input type="text" class="form-control col-2" name="number2">
+			<button type="submit" class="btn btn-success">계산</button>
+		</div>
+	</form>
+		
+		
+	
+	
+	
+	<%--
 	<form method="post" action="/jsp/test04.jsp">
 		<input type="text" class="btn btn-outline-secondary" name="number1">
 		<select name="operator" class="btn btn-outline-secondary" style="width: 100px; height:38px;">
@@ -25,7 +46,8 @@
 		</select>
 		<input type="text" class="btn btn-outline-secondary" name="number2">
 		<button class="btn bg-success text-white">계산</button>
-	</form>
+	</form>	
+	 --%>
 
 </body>
 </html>

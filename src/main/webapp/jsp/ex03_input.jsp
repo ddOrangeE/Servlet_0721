@@ -28,7 +28,13 @@
 			<option>딸기</option>
 		</select>
 		
-		
+		<!-- 체크박스의 특징은 여러개중의 하나가 아니라 여러개 중의 여러개 -->
+		<!-- 체크박스도 역시 하나의 이름으로 묶어주어야 한다(select와 같은 특징) -->
+		<h4>다음 중 선호하는 음식을 고르세요</h4>
+		<label>민트초코 <input type="checkbox" name="food" value="mincho"></label>
+		<label>하와이안 피자 <input type="checkbox" name="food" value="pizza"></label>
+		<label>번데기 <input type="checkbox" name="food" value="pupa"></label>
+				
 		<button type="submit">입력</button>
 	</form>
 </body>

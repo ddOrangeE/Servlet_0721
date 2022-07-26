@@ -15,7 +15,44 @@
 
 </head>
 <body>
+	
+	<!-- 선생님 풀이 -->
+	
+<%
+	int number1 = Integer.parseInt(request.getParameter("number1"));
+	int number2 = Integer.parseInt(request.getParameter("number2"));	
+	
+	String operatorString = request.getParameter("operator");
+	
+	// 더하기 빼기 곱하기 나누기
+	// plus, minus, multiple, divide
+	
+	double result = 0;
+	String operator = "";
+	if(operatorString.equals("plus")) {
+		result = number1 + number2;
+		operator = "+";
+	} else if(operatorString.equals("minus")) {
+		result = number1 - number2;
+		operator = "-";
+	} else if(operatorString.equals("multiple")) {
+		result = number1 * number2;
+		operator = "X";
+	} else {
+		result = number1 / (double)number2;
+		operator = "/";
+	}
+	
+%>
 
+	<!-- container 주면 적당히 사이즈 잡히고 중간에 뜨게 된다. -->
+	<div class="container">
+		<h1>계산결과</h1>
+		<div class="display-4"><%= number1 %> <%= operator %> <%= number2 %> = <span class="text-primary"><%= result %></span></div>	
+	</div>
+
+	
+	<%-- 
 	<%
 		//double number1 = (double)Integer.parseInt(request.getParameter("number1"));
 		//String operator = request.getParameter("operator");
@@ -27,7 +64,16 @@
 		String operator = request.getParameter("operator");
 		int number2 = Integer.parseInt(request.getParameter("number2"));
 		
-		double result = 0.0;
+		double result = 0;
+		
+		
+		// <null>이 안되는 이유!!
+		
+		// null
+		// int string = null;
+		
+		// double, int 와 같이 소문자로 시작되는 것들은 primitive타입이라고 이건 -> stack(메모리 영역) 에 직접 저장이 된다 : null 사용 불가
+		// String 과 같이 대문자로 시작되는 것들은 거의 클래스 기반으로 만들어진 것인데(class 기반) -> heap(메모리 영역) 에 저장이 된다 : null 사용 가능 
 		
 		
 		if(operator.equals("+")) {
@@ -37,9 +83,13 @@
 		} else {
 			result = number1 * number2;
 		}
-	
+		
+		// 만약에 int를 받았을 때 int로 출력하고 싶다! 출력하는 과정에서
+		// 자바 출력 포맷
+		// 하지만 이건 나중에 더 쉬운 방법 배우고 개발하는 과정에선 굳이 필요없음
 	
 	%>
+
 	
 	<div class="container">
 	
@@ -47,6 +97,8 @@
 		<div class="display-1"><%= number1 + operator + number2 %> = <span class="text-primary"><%= result %></span></div>	
 	
 	</div>
+
+	--%>
 
 </body>
 </html>

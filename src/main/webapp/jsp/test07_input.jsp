@@ -15,6 +15,24 @@
 </head>
 <body>
 	
+	<!-- 선생님 풀이 -->
+	<div class="container">
+		<h1>메뉴검색</h1>
+		
+		<form method="get" action="/jsp/test07.jsp">
+			<div class="d-flex">
+				<input type="text" class="form-control col-3" name="menu">
+				
+				<!-- 체크박스엔 항상 value가 따라와야한다! -->
+				<label><input type="checkbox" name="pointFilter" value="true"> 4점 이하 제외 </label>					
+			</div>
+			
+			<button type="submit" class="btn btn-success">검색</button>
+		</form>
+	</div>
+
+	
+	<%--
 	<div class="ml-2 mt-2">
 		<h1>메뉴검색</h1>
 		<form method="post" action="/jsp/test07.jsp">
@@ -25,6 +43,8 @@
 			</div>
 	</div>
 	</form>
+	
+	 --%>
 
 </body>
 </html>

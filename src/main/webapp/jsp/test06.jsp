@@ -16,6 +16,45 @@
 
 </head>
 <body>
+
+	
+	<%
+	List<String> goodsList = Arrays.asList(new String[]{ 
+		    "저지방 우유", "요플레 4개", "딸기 1팩", "삼겹살 300g", "생수 6개", "주방 세제"
+		});
+	%>
+
+	<!-- 선생님 풀이 -->
+	<div class="container">
+		<h1 class="text-center">장목록</h1>
+		
+		<table class="table text-center">
+			
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>품목</th>
+				</tr>
+			</thead>		
+		
+			<tbody>
+				<% for(int i = 0; i < goodsList.size(); i++) { %>
+				<!-- 숫자를 써야할 것 같으니까 인덱스 기반의 반복문 사용 -->
+				
+				<tr>
+					<td><%= i + 1 %></td>
+					<td><%= goodsList.get(i) %></td>
+				</tr>
+				<% } %>	
+			</tbody>
+		
+		</table>
+	</div>
+	
+	
+	
+<%--
+
 	<%
 	List<String> goodsList = Arrays.asList(new String[]{ 
 		    "저지방 우유", "요플레 4개", "딸기 1팩", "삼겹살 300g", "생수 6개", "주방 세제"
@@ -40,7 +79,6 @@
 		</tr>
 	
 	</table>	
-	--%>
 	
 	
 	
@@ -68,6 +106,7 @@
 	</table>
 	
 	
+ --%>
 	
 	
 	

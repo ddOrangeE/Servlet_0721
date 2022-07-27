@@ -19,6 +19,15 @@
 <body>
 
 	<%
+		String searchMenu = request.getParameter("menu");
+		String pointFilter = request.getParameter("pointFilter");
+		
+		// 잠시 확인용도니까 out.println 써도 됨
+		// out.println(pointFilter);
+		// check가 되어있으면 true 라는 값이 뜨고
+		// check가 안되어있으면 null(아예 아무값도 전달되지 않는다)
+		
+		
 		List<Map<String, Object>> list = new ArrayList<>();
 	    Map<String, Object> map = new HashMap<String, Object>() {{ put("name", "버거킹"); put("menu", "햄버거"); put("point", 4.3); } };
 	    list.add(map);
@@ -36,6 +45,82 @@
 	    list.add(map);
 	%>
 	
+	<!-- 선생님 풀이 -->
+		
+	
+	<div class="container">
+		<h1 class="text-center">검색 결과</h1>
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>메뉴</th>
+					<th>가게</th>
+					<th>별점</th>
+				</tr>
+			</thead>
+			<tbody>
+			
+				<% for(Map<String, Object> store : list) {
+					
+					// Object -- 모든 클래스가 상속받는 끝판왕 부모클래스
+					// Object를 활용하면 모든 클래스(변수) 사용가능
+					// 하지만 저장은 할 수 있는데 사용하려면 다운캐스팅을 통해서 원래 타입으로 바꿔주어야함
+					
+					// seachMenu
+						if(searchMenu.equals(store.get("menu"))) {
+							
+							// object class 기반의 객체
+							// downcasting을 할 때는 한 번 묶어주어야지 에러안나고 가능
+							
+							// 랩퍼 클래스
+							// Double point = (Double)store.get("point");
+							
+							// 랩퍼 클래스는 기본자료형인 double 을 통해서도 다운캐스팅 할 수 있다
+							double point = (Double)store.get("point");
+							
+							// 일단 메뉴 확인하고 나서 들어갈 거니까 if안에 또 들어갈 것
+							
+							// 포인트필터가 체크되어 있지 않으면 보여줘라
+							// 포인트필터가 선택되었고, 현재 맵의 point가 4.0이상이면 보여줘라
+							
+							// 또는!! 왜냐면 둘중에 하나만 하면 되니까
+							//if(pointFilter == null || (pointFilter.equals("true") && point >= 4.0)) {
+								// pointFiter == null 인 조건을 앞에 두지 않으면 null 일 때 에러가 난다. 
+								// 왜 앞에 두면 에러가 안날까?
+								// 또는 일 때는 앞에꺼 참이면 뒤에꺼 확인안한다는 특징!! -> 앞에서 null인 걸 확인하고 뒤에선 확인 안하기 때문에 (또는은 둘중에 하나가 참이면 코드 수행) 에러안남
+								
+							//if(pointFilter == null || point >= 4.0) {
+								
+							// 사실 이렇게 해도 됨 왜냐면 null이 아닌 걸 확인하면 뒤에껀 무조건 true이기 때문에 true인지 확인할 조건 필요없음	
+							
+							// <두번째 풀이>
+							// 포인트필터가 선택되어 있고, 4.0 미만이면 보여주지 말아라
+							// 안보여주는 조건
+							if(pointFilter != null && point < 4.0) {
+								continue;
+							}
+				
+				%>
+						
+
+				<tr>
+					<td><%= store.get("menu") %></td>
+					<td><%= store.get("name") %></td>
+					<td><%= store.get("point") %></td>
+				</tr>
+				
+				
+				<%
+							//} -- 첫번째 풀이 중괄호(얘는 보여줘야하니까)
+				
+					}
+				} %>
+			</tbody>
+		
+		</table>
+	</div>
+	
+	<%--
 	<h1 class="mt-2">검색 결과</h1>
 	<table class="table text-center mt-3">
 		<tr>
@@ -90,5 +175,7 @@
 		%>
 	</table>
 	
+	
+	 --%>
 </body>
 </html>

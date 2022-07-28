@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>멜롱 음악 상세정보</title>
 
 <!-- bootstrap CDN link -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -86,48 +86,81 @@
     musicInfo.put("lyricist", "아이유");
     musicList.add(musicInfo);
 %>
-
-	<jsp:include page="header.jsp" />
-	<jsp:include page="menu.jsp" />
-	<section>
-		<article class="d-flex border border-success">
-				<img width="200" class="m-2" src="https://cdnimg.melon.co.kr/cm/album/images/102/10/535/10210535_500.jpg?f80bff85a135984aa8f2392889bda057" alt="아이유 프로필">
-				
-				<div class="ml-2">
-					<div class="mt-3">
-						<div class="display-1">삐삐</div>
-						<div class="mt-2 text-sucess">아이유</div>
+	
+	<div id="wrap" class="container">
+		
+		<jsp:include page="header.jsp" />
+		<jsp:include page="menu.jsp" />
+		<section>
+			<article class="d-flex border border-success">
+			
+			<%
+				int askId = Integer.parseInt(request.getParameter("id"));
+			
+				for(Map<String, Object> music : musicList) {
+					
+					int id = (int)music.get("id");
+					String title = (String)music.get("title");
+					String album = (String)music.get("album");
+					String singer = (String)music.get("singer");
+					String thumbnail = (String)music.get("thumbnail");
+					int time = (int)music.get("time");
+					String composer = (String)music.get("composer");
+					String lyricist = (String)music.get("lyricist");
+					
+					
+					if(askId == id) {
 						
-						<div class="d-flex">
+			
+			
+			%>
+			
+					<img width="200" class="m-2" src="<%= thumbnail %>" alt="<%= title %>썸네일">
+					
+					<div class="ml-1">
+						<div>
 						
-							<div>
+							<div class="display-3"><%= title %></div>
+							<h5 class="mt-1 ml-1 text-success font-weight-bold"><%= singer %></h5>
 							
-								<div class="text-secondary">앨범</div>
-								<div class="text-secondary">재생시간</div>
-								<div class="text-secondary">작곡가</div>
-								<div class="text-secondary">작사가</div>
-								 
+							<div class="d-flex mt-1 ml-1">
+							
+								<div>
+								
+									<div class="text-secondary">앨범</div>
+									<div class="text-secondary">재생시간</div>
+									<div class="text-secondary">작곡가</div>
+									<div class="text-secondary">작사가</div>
+									 
+								</div>
+								
+								
+								<div class="ml-4">
+								
+									<div class="text-secondary"><%= album %></div>
+									<div class="text-secondary"><%= time / 60 %>:<%= time % 60 %></div>
+									<div class="text-secondary"><%= composer %></div>
+									<div class="text-secondary"><%= lyricist %></div> 
+									 
+								</div>
+								
+								
+				<%
+					}
+				}
+				%>
+							
 							</div>
-							<div>
 							
-								<div class="text-secondary">삐삐</div>
-								<div class="text-secondary">3:14</div>
-								<div class="text-secondary">이승훈</div>
-								<div class="text-secondary">아이유</div>
-								 
-							</div>
-							
-						
 						</div>
 						
 					</div>
-					
-				</div>
-			</article>
-		<article></article>
-	
-	</section>
-	<jsp:include page="footer.jsp" />
+				</article>
+			<article></article>
+		
+		</section>
+		<jsp:include page="footer.jsp" />
+	</div>
 
 </body>
 </html>

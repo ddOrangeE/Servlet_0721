@@ -136,7 +136,7 @@
 					
 						<tr>
 							<td><%= id %></td>
-							<td class="text-primary"><%= title %></td>
+							<td class="text-primary"><a href="/jspTemplete/test02/music_info.jsp?id=<%= id %>"><%= title %></a></td>
 							<td><%= album %></td>
 						</tr>
 						

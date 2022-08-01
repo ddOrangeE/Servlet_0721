@@ -44,6 +44,9 @@ public class MysqlService {
 	// 접속기능
 	public void connect() {
 		try {
+			// 드라이버라는 건 다른 형태의 것을 연결해주는 것(완전히 다른 것을 연결시켜줄 때 그 것을 드라이버라고 한다)
+			// 즉 드라이버를 사용함으로써 jdbc와 연결해주는 것이고(접속)
+			// 사용법으로 알고만 있으면 된다!! 
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 			
 			

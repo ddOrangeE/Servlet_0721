@@ -44,7 +44,9 @@
 				<tr>
 					<td><%= resultSet.getString("name") %></td>
 					<td><a href="<%= resultSet.getString("url") %>"><%= resultSet.getString("url") %></a></td>
-					<td><a class="text-danger" href="/db/test02/delete?id=<%= resultSet.getInt("id") %>">삭제</a>
+					
+					<!-- btn-sm : 버튼 작게 -->
+					<td><a class="btn btn-danger btn-sm" href="/db/test02/delete?id=<%= resultSet.getInt("id") %>">삭제</a>
 				</tr>
 			<% 	
 				}

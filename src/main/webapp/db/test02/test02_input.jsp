@@ -18,6 +18,7 @@
 	<div class="container">	
 		<h1 class="mt-2">즐겨찾기 추가</h1>
 		
+		<!-- 사이트 주소가 파라미터로 전달되는 게 보이면 조금 찝찝하니까 : post -->
 		<form method="post" action="/db/test02/insert">
 			<div class="mt-2">		
 				<label class="font-weight-bold">사이트명:</label> <br>

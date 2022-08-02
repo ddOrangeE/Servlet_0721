@@ -20,6 +20,7 @@ public class DBTest02DeleteController extends HttpServlet {
 		MysqlService mysqlService = MysqlService.getInstance();
 		mysqlService.connect();
 		
+		// delete는 큰 이변이 없다면 id 기반이 가장 좋음
 		String query = "DELETE FROM `favorites` WHERE `id` = " + id + ";";
 		
 		mysqlService.update(query);

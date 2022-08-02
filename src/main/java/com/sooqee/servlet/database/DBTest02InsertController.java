@@ -15,13 +15,14 @@ public class DBTest02InsertController extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
+		// 사이트이름, url
 		String name = request.getParameter("name");
 		String url = request.getParameter("url");
 		
 		MysqlService mysqlService = MysqlService.getInstance();
 		mysqlService.connect();
 		
-		String query = "INSERT INTO `Favorites`\r\n"
+		String query = "INSERT INTO `favorites`\r\n"
 				+ "(`name`, `url`, `createdAt`, `updatedAt`)\r\n"
 				+ "VALUE\r\n"
 				+ "('" + name + "', '" + url + "', now(), now());";
